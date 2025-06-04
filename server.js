@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
@@ -201,6 +201,9 @@ app.delete("/api/posts/:id", authenticateToken, async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
+});
+app.use('/', (req, res) => {
+  res.send("Welcome to the MERN Blog API");
 });
 
 const PORT = process.env.PORT || 4000;
